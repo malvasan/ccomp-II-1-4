@@ -22,6 +22,7 @@ class ano
 {
     public:
         mes meses[12];
+		int anos;
 
         ano(int anio)
         {
@@ -57,8 +58,12 @@ double cal_dias(int dia1,int mes1,int ano1,int dia2,int mes2,int ano2)
         if (mes1>12){
             mes1=1;
             ano1++;
-            if(ano1%4==0)
+            if(ano1%4==0 && primer.anos%4!=0){
                 dias_en_total++;
+			}
+			else if (primer.anos%4==0 && ano1%4!=0)
+				--dias_en_total;
+				
         }
         dias_en_total+=primer.meses[mes1-1].dias;
         mes1++;
@@ -66,7 +71,7 @@ double cal_dias(int dia1,int mes1,int ano1,int dia2,int mes2,int ano2)
             dia1=dia2;
             dias_en_total+=dia2;
         }
-
+		
     }
     return dias_en_total;
 }
@@ -78,7 +83,7 @@ double cal_semanas(int dias)
 
 double cal_meses(int dias)
 {
-    return dias/30;
+    return dias/30.4;
 }
 
 double cal_ano(int dias)
@@ -111,14 +116,14 @@ void diferencia(int dia1,int mes1,int ano1,int dia2,int mes2,int ano2)
 int main()
 {
     cout << "Hello world!" << endl;
-    double c=cal_dias(23,8,2017,23,8,2018);
-    cout<<++c<<endl;
-    cout<<cal_semanas(c)<<endl;
-    cout<<cal_meses(c)<<endl;
-    cout<<cal_ano(c)<<endl;
-    cout<<cal_segundos(c)<<endl;
-    cout<<cal_min(c)<<endl;
-    cout<<cal_horas(c)<<endl;
-
+    int c=cal_dias(21,12,1980,26,8,2017);
+    cout<<"DIAS: "<<++c<<endl;
+    cout<<"SEMANAS: "<<cal_semanas(c)<<endl;
+    cout<<"MESES: "<<cal_meses(c)<<endl;
+    cout<<"ANOS: "<<cal_ano(c)<<endl;
+	cout<<"SEGUNDOS: "<<c*86400<<endl;
+	cout<<"MINUTOS: "<<c*1440<<endl;
+	cout<<"HORAS: "<<c*24<<endl;
+	
     return 0;
 }

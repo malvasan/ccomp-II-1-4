@@ -12,39 +12,49 @@
 
 using namespace std;
 
-void movimiento(int *a[4],int** ptr,int* ptr2)
+void movimiento(int (*A)[4],int (*a)[4],int *B,int *b,int** ptr)
 {
-    int temp_fila;
-    int temp_columna;
+    int* temp_fila;
+    int* temp_columna;
     int tecla=0;
     tecla=getch();
-
-
+    if(tecla==ARRIBA){
+        if(a==A)
+            return;
+        a--;
+        b=b-4;
+        B=*a;
+    }
+    if(tecla==ABAJO){
+        if(a-A==3)
+            return;
+        a++;
+        b=b+4;
+        B=*a;
+    }
 }
 
 int main()
 {
-    int a[4][4];
-    int(* ptr)[4];
-    int* ptr2;
-    ptr=a+3;
-    ptr2=*ptr+3;
-    int temp=1;
+    int arreglo[4][4]={{1,2,3,4},{5,6,7,8},{9,10,11,12},{13,14,15,0}};
+    int(* A)[4];
+    int(* a)[4];
+    int* B;
+    int* b;
+    A=arreglo;
+    a=A;
+    B=*arreglo;
+    b=B;
+    a=A+3;
+    b=*a+3;
     for(int i=0;i<4;i++){
         for(int o=0;o<4;o++){
-            *(*(a+i)+o)=temp;
-            temp++;
-        }
-    }
-    *(*(a+3)+3)=0;
-    for(int i=0;i<4;i++){
-        for(int o=0;o<4;o++){
-            cout<<*(*(a+i)+o);
+            cout<<*(*(arreglo+i)+o);
         }
         cout<<endl;
     }
-    cout<<**ptr<<endl;
-    cout<<*ptr2<<endl;
+    cout<<**a<<endl;
+    cout<<*b<<endl;
     cout << "Hello world!" << endl;
     return 0;
 }

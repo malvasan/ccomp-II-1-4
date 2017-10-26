@@ -88,7 +88,6 @@ bool ganar(int (* &A)[4],int (* &a)[4],int * &B,int * &b,int (*mat)[4])
                 if(cont==16)
                     cont=0;
             }
-        cout<<endl;
     }
     return false;
     }
